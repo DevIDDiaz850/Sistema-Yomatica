@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Filament\Resources\Facturas;
+
+use App\Filament\Resources\Facturas\Pages\CreateFactura;
+use App\Filament\Resources\Facturas\Pages\EditFactura;
+use App\Filament\Resources\Facturas\Pages\ListFacturas;
+use App\Filament\Resources\Facturas\Schemas\FacturaForm;
+use App\Filament\Resources\Facturas\Tables\FacturasTable;
+use App\Models\Factura;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema; // Sintaxis de tu versión
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class FacturaResource extends Resource
+{
+    protected static ?string $model = Factura::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedReceiptPercent;
+
+    // Agregamos esto para asegurar que el menú se llame correctamente
+    protected static ?string $navigationLabel = 'Facturas';
+
+    public static function form(Schema $schema): Schema
+    {
+        // Delegando a tu clase externa
+        return FacturaForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        // Delegando a tu clase externa
+        return FacturasTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListFacturas::route('/'),
+            'create' => CreateFactura::route('/create'),
+            'edit' => EditFactura::route('/{record}/edit'),
+        ];
+    }
+}
