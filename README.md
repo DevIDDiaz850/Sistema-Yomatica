@@ -14,7 +14,40 @@ Asegúrate de tener instalado lo siguiente en tu entorno local antes de continua
 * **Git**
 
 ---
-
+## Árbol del proyecto
+```bash
+example-app/
+├── app/
+│   ├── Filament/
+│   │   └── Resources/
+│   │       ├── FacturaResource.php            
+│   │       └── Facturas/                      
+│   │           ├── Pages/                    
+│   │           │   ├── CreateFactura.php      
+│   │           │   ├── EditFactura.php        
+│   │           │   └── ListFacturas.php       
+│   │           └── Tables/
+│   │               └── FacturasTable.php      
+│   │
+│   ├── Http/
+│   │   └── Controllers/
+│   │       └── FacturaDownloadController.php  
+│   │
+│   └── Services/
+│       └── FacturapiFacturaService.php      
+│
+├── database/
+│   └── migrations/                            
+│
+├── routes/
+│   └── web.php                              
+│
+├── storage/
+│   └── app/public/                           
+│
+├── .env                                       
+└── README.md                                  
+```
 ## Instalación Paso a Paso
 
 Sigue estos pasos para levantar el proyecto en tu entorno local desde cero:
