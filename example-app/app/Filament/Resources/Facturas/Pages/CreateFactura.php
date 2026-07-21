@@ -15,11 +15,16 @@ class CreateFactura extends CreateRecord
 
     protected function handleRecordCreation(array $data): Model
     {
+        // 1. Obtener la lista de conceptos del formulario
+        $conceptos = $data['conceptos'] ?? [];
+
+        // 2. Guardar la factura localmente
         $factura = static::getModel()::create($data);
 
+        // 3. Timbrar con Facturapi
         try {
-            $servicio = new FacturapiFacturaService();
-            $servicio->timbrar($factura);
+            $servicio = app(FacturapiFacturaService::class);
+            $servicio->timbrar($factura, $conceptos);
 
             Notification::make()
                 ->title('¡Factura Timbrada con Éxito!')
@@ -27,6 +32,7 @@ class CreateFactura extends CreateRecord
                 ->send();
 
         } catch (Exception $e) {
+            // Si falla el timbrado, eliminamos el registro local
             $factura->delete();
 
             Notification::make()

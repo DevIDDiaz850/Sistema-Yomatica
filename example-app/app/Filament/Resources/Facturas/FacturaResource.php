@@ -20,18 +20,15 @@ class FacturaResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedReceiptPercent;
 
-    // Agregamos esto para asegurar que el menú se llame correctamente
     protected static ?string $navigationLabel = 'Facturas';
 
     public static function form(Schema $schema): Schema
     {
-        // Delegando a tu clase externa
         return FacturaForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        // Delegando a tu clase externa
         return FacturasTable::configure($table);
     }
 
