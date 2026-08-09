@@ -19,6 +19,7 @@ class ProductoResource extends Resource
     protected static ?string $model = Producto::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCube;
+    protected static string|null|\UnitEnum $navigationGroup = 'Comercio';
     protected static ?string $recordTitleAttribute = 'facturapi_id';
 
     public static function form(Schema $schema): Schema

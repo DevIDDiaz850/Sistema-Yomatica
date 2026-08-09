@@ -19,6 +19,7 @@ class FacturaResource extends Resource
     protected static ?string $model = Factura::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedReceiptPercent;
+    protected static string|null|\UnitEnum $navigationGroup = 'Comercio';
 
     protected static ?string $navigationLabel = 'Facturas';
 

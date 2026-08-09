@@ -7,6 +7,7 @@ use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -19,6 +20,7 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Navigation\NavigationItem;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -58,6 +60,22 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Soporte y Tickets')
+                    ->icon('heroicon-o-lifebuoy')
+                    ->collapsed(false),
+
+                NavigationGroup::make()
+                    ->label('Comercial y Ventas')
+                    ->icon('heroicon-o-briefcase')
+                    ->collapsed(false),
+
+                NavigationGroup::make()
+                    ->label('Administración')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(false),
             ]);
     }
 }

@@ -26,6 +26,7 @@ class ClienteResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingOffice;
     protected static ?string $recordTitleAttribute = 'facturapi_id';
+    protected static string|null|\UnitEnum $navigationGroup = 'Comercio';
 
     public static function form(Schema $schema): Schema
     {
